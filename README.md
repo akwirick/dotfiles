@@ -27,8 +27,6 @@ Each top-level directory is a Stow package. The directory structure inside mirro
 | `statusline.sh` | Two-line status bar (session name, model, context usage, git info) |
 | `skills/lfg/` | Create a fresh branch from main for new work |
 | `skills/query-insights/` | Query Cloud SQL Query Insights via GCP Monitoring API |
-| `skills/roborev-address/` | Fetch and fix roborev code review findings |
-| `skills/roborev-respond/` | Comment on and address roborev reviews |
 | `skills/weekly-wrap/` | Generate weekly progress reports from GitHub, Jira, Linear, Slack, Calendar, Granola, Notion, and Claude session history |
 
 ## Adding a new package

@@ -76,6 +76,7 @@ When asked to add a reviewer by first name, use the GitHub handle from this tabl
 | Shawn | `shawnburke` |
 | Van | `worksbyvan` |
 
+<!-- org:tools -->
 ## Available CLIs
 
 Standard tools (`gh`, `docker`, `jq`, `yq`, `kubectl`, `helm`, `terraform`, `buf`) are on the path. Notable domain-specific CLIs:
@@ -89,3 +90,4 @@ Standard tools (`gh`, `docker`, `jq`, `yq`, `kubectl`, `helm`, `terraform`, `buf
 | `pup` | Datadog | 200+ commands across 33 products (logs, metrics, monitors, etc.) |
 | `yq` | YAML | Validate YAML with `yq '.' file.yml > /dev/null` |
 | `act` | GitHub Actions | Run workflows locally; use `-P ubuntu-latest=catthehacker/ubuntu:act-latest` |
+<!-- /org:tools -->

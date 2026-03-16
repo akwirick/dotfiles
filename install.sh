@@ -49,4 +49,16 @@ for pkg in "${packages[@]}"; do
   stow -d "$DOTFILES_DIR" -t "$HOME" "$pkg"
 done
 
+# Sync org commons (opt-in, requires gh CLI)
+if command -v gh &>/dev/null; then
+  echo "Syncing org commons..."
+  if [ -f "$HOME/.claude/org/claude/sync.sh" ]; then
+    bash "$HOME/.claude/org/claude/sync.sh"
+  else
+    bash <(gh api repos/cortexapps/eng-commons/contents/claude/sync.sh -q '.content' | base64 -d) || echo "  Skipped org commons sync (run manually later)"
+  fi
+else
+  echo "Skipping org commons sync (gh CLI not found)"
+fi
+
 echo "Done."

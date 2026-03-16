@@ -1,0 +1,17 @@
+{
+  "github": {
+    "username": "akwirick",
+    "orgs": ["cortexapps", "cortextests"]
+  },
+  "jira": {
+    "projects": ["CET"]
+  },
+  "slack": {
+    "keychain_service": "weekly-wrap-slack"
+  },
+  "repos": {
+    "agent_dirs": ["~/src/agents/*/primary"],
+    "git_authors": ["akwirick", "aaron", "noreply@anthropic.com"]
+  },
+  "output_dir": "~/weekly-wraps"
+}

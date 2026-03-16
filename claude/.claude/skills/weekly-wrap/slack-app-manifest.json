@@ -1,0 +1,19 @@
+{
+  "display_information": {
+    "name": "Weekly Wrap",
+    "description": "Searches my Slack messages for weekly progress reports",
+    "background_color": "#2c2d30"
+  },
+  "oauth_config": {
+    "scopes": {
+      "user": [
+        "search:read"
+      ]
+    }
+  },
+  "settings": {
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": false
+  }
+}

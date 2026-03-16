@@ -3,6 +3,12 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
+# Files that get post-processed by org sync — copy instead of symlink
+COPY_FILES=(
+  "claude/.claude/CLAUDE.md"
+  "claude/.claude/settings.json"
+)
+
 # Detect platform and install stow if needed
 if ! command -v stow &>/dev/null; then
   echo "Installing GNU Stow..."
@@ -47,6 +53,22 @@ for pkg in "${packages[@]}"; do
   done < <(find "$DOTFILES_DIR/$pkg" -type f -print0)
 
   stow -d "$DOTFILES_DIR" -t "$HOME" "$pkg"
+done
+
+# Replace symlinks with copies for files that get post-processed by org sync.
+# Stow creates the symlinks above; we swap them for copies so sync.sh can
+# modify them without writing back into the dotfiles repo.
+for cf in "${COPY_FILES[@]}"; do
+  target="$HOME/${cf#*/}"  # strip package prefix (e.g. claude/) to get ~/.claude/...
+  source="$DOTFILES_DIR/$cf"
+  if [[ -f "$source" ]]; then
+    if [[ -L "$target" ]]; then
+      rm "$target"
+    fi
+    mkdir -p "$(dirname "$target")"
+    cp "$source" "$target"
+    echo "Copied (not symlinked): $target"
+  fi
 done
 
 # Sync org commons (opt-in, requires gh CLI)
